@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/pantalla_Principal">
+    <activity
+        android:id="@+id/pantalla_Principal"
+        android:name="com.example.ptc1.Pantalla_Principal"
+        android:label="activity_pantalla_principal"
+        tools:layout="@layout/activity_pantalla_principal" />
+    <activity
+        android:id="@+id/configuraciones"
+        android:name="com.example.ptc1.Configuraciones"
+        android:label="activity_configuraciones"
+        tools:layout="@layout/activity_configuraciones" />
+    <activity
+        android:id="@+id/calendario"
+        android:name="com.example.ptc1.Calendario"
+        android:label="Calendario" />
+</navigation>
