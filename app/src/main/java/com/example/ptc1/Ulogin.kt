@@ -44,7 +44,28 @@ class Ulogin : AppCompatActivity() {
 
         btniniciarsesion.setOnClickListener {
             val correo = txtcorreologin.text.toString()
-            val contraseña = txtcontralogin.text.toString()
+            val contrasena = txtcontralogin.text.toString()
+            var hayerrores = false
+
+            if(!correo.matches(Regex("[[a-zA-Z0-9._ - ]+@[a-z]+[.][a-z]+]"))){
+                txtcorreologin.error = "Formato de correo no válido"
+                hayerrores = true
+            }
+
+            else{
+                txtcorreologin.error = null
+            }
+
+            if (contrasena.length <=7){
+                txtcontralogin.error = "La contraseña debe tener un mínimo de 8 carácteres"
+                hayerrores = true
+
+            }
+
+            else{
+                txtcontralogin.error = null
+            }
+
 
             // Ejecutar la lógica de inicio de sesión en un hilo de fondo
             GlobalScope.launch(Dispatchers.IO) {
@@ -53,7 +74,7 @@ class Ulogin : AppCompatActivity() {
                     val query = "SELECT * FROM Usuario WHERE correo_electronico = ? AND contraseña = ?"
                     val statement = connection?.prepareStatement(query)
                     statement?.setString(1, correo)
-                    statement?.setString(2, contraseña)
+                    statement?.setString(2, contrasena)
 
                     val resultSet = statement?.executeQuery()
 
